@@ -1,0 +1,6 @@
+mkdir <name>
+cd<name>
+touch<name>
+git commit
+git branch
+git switch
