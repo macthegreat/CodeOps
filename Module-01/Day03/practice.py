@@ -14,8 +14,6 @@ for name,bill in customers:
     print(f"{name} : {calc_tip}")
     
     
-    
-  
 # dictionary
 student={
     "name":"mike",
