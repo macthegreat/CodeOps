@@ -23,7 +23,6 @@ form.addEventListener("submit", (event) => {
   const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
 
-  // First validation error
   if (name.length < 2) {
     error.textContent = "Name must be at least 2 characters.";
     return;
@@ -49,5 +48,4 @@ form.addEventListener("submit", (event) => {
   updateCount();
 });
 
-// Restore count when page loads
 updateCount();

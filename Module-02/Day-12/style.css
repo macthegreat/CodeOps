@@ -1,0 +1,60 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+.birr-watch{
+   width: 50%;
+   height: fit-content;
+   margin: auto;
+   background-color: darkgray;
+}
+#main-header{
+text-align: center;
+text-decoration: underline;
+color: blue;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: large;
+}
+#slogan{
+   text-align: center;
+   margin-top: 10px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-display: fallback;
+}
+.data-entry{
+   margin-top: 10px;
+   width: 50%;
+   height: fit-content;
+   display: block;
+   align-items: left;
+   background-color: bisque;
+
+}
+.da-titles{
+text-align: center;   
+margin-top: 15px;
+}
+.da-labels{
+   display: block;
+   margin-left: 10px;
+   margin-top: 10px;
+
+}
+#convert{
+   width: 15%;
+   background-color: darkgrey;
+   margin-left: 15px;
+   color: brown;
+   border-radius: 10%;
+   border: 0;
+}
+.watchlist{
+     margin-top: 10px;
+   width: 50%;
+   height: fit-content;
+   display: block;
+   align-items: right;
+   background-color: bisque;
+
+}
