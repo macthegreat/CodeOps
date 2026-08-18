@@ -1,45 +1,187 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header-section">
-        <h1>Addis Eats</h1>
-      </div>
-      <div class="search-input">
-        <input type="text" name="search" placeholder="search dishes" />
-      </div>
-      <div class="main-section">
-        <h3>Our Menu</h3>
-        <section class="menu-item">
-          <h4>Doro wat</h4>
-          <p>main</p>
-          <p>spicy</p>
-          <h4>240 ETB</h4>
-        </section>
-      </div>
-      <div class="side-bar">
-        <h3>Your Order</h3>
-        <div class="order-list">
-          <ul>
-            <li>tibs</li>
-            <li>shiro</li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addis Eats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-            <h4>Rotal: 540ETB</h4>
-          </ul>
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Addis Eats</h1>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search dishes..."
+            >
+        </header>
+
+        <div class="content">
+
+            <!-- Menu -->
+            <section class="menu-section">
+                <h2>Our Menu</h2>
+
+                <div class="menu-grid">
+
+                    <article class="menu-card">
+                        <h3>Doro Wat</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>240 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Shiro</h3>
+                        <p>Vegetarian</p>
+                        <strong>120 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Kitfo</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>320 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Tibs</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>280 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Injera Firfir</h3>
+                        <p>Breakfast</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>100 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Beyaynetu</h3>
+                        <p>Vegetarian</p>
+                        <strong>150 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Misir Wat</h3>
+                        <p>Vegetarian</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>110 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Gomen</h3>
+                        <p>Vegetarian</p>
+                        <strong>90 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Atikilt Wot</h3>
+                        <p>Vegetarian</p>
+                        <strong>100 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Derek Tibs</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>310 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Key Wat</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>220 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Alicha Wat</h3>
+                        <p>Main</p>
+                        <strong>210 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Bozena Shiro</h3>
+                        <p>Main</p>
+                        <span class="spicy">🌶️ Spicy</span>
+                        <strong>180 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Ayibe</h3>
+                        <p>Side</p>
+                        <strong>70 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                    <article class="menu-card">
+                        <h3>Kocho</h3>
+                        <p>Side</p>
+                        <strong>60 ETB</strong>
+                        <button>Add to Order</button>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Order -->
+            <aside class="order-section">
+
+                <h2>Your Order</h2>
+
+                <div class="order-item">
+                    <span>Tibs (x1)</span>
+                    <strong>280 ETB</strong>
+                    <button class="remove">×</button>
+                </div>
+
+                <div class="order-item">
+                    <span>Injera Firfir (x1)</span>
+                    <strong>100 ETB</strong>
+                    <button class="remove">×</button>
+                </div>
+
+                <div class="order-item">
+                    <span>Derek Tibs (x1)</span>
+                    <strong>310 ETB</strong>
+                    <button class="remove">×</button>
+                </div>
+
+                <div class="total">
+                    <span>Total:</span>
+                    <strong>690 ETB</strong>
+                </div>
+
+            </aside>
+
+
         </div>
-      </div>
-      <div class="footer">
-        <p>
-          &copy; 2026 IBT CodeOps. <span>All rights reserved.</span>
-          <span>we Accept Telebirr</span>
-        </p>
-      </div>
-    </div>
-  </body>
+        <div class="footer">
+             <p>&copy; 2026 IBT CodeOps. All rights reserved. <span class="telebirr">we accept Telebirr</span></span></p>
+        </div>
+
+    </main>
+
+</body>
 </html>
