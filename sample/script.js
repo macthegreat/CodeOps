@@ -1,6 +1,9 @@
 // 1. Global State
 let menuItems = [];
 let cart = [
+    { id: 4, name: 'Tibs', price: 280, quantity: 1 },
+    { id: 5, name: 'Injera Firfir', price: 100, quantity: 1 },
+    { id: 10, name: 'Derek Tibs', price: 310, quantity: 1 }
 ];
 
 // 2. DOM Selection
@@ -42,7 +45,7 @@ function renderMenu(dishes) {
     dishes.forEach(dish => {
         const card = document.createElement('div');
         card.className = 'menu-card';
-        const spicyText = dish.spicy ? 'Spicy' : 'Non-Spicy';
+        const spicyText = dish.spicy ? 'Spicy' : '';
 
         card.innerHTML = `
             <h3>${dish.name}</h3>
