@@ -1,0 +1,18 @@
+.card {
+  background-color: #ffffff;
+  border: 1px solid red;
+  color: black;
+  border-radius: 12px;
+  padding: 18px;
+  /* width: 10%; */
+}
+
+.card-name {
+  margin: 0 0 10px;
+  color: #17412f;
+}
+
+.card p{
+    font-weight: bold;
+    color: #f71f1f
+}
