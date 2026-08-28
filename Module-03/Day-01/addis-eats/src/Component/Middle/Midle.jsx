@@ -6,7 +6,7 @@ function Midle(){
     return (
         <div className='container-grid'>
             <Sidebar/>
-            <Products/>
+            <Products category='Vegetarian'/>
         </div>
     )
 }

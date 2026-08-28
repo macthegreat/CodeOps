@@ -27,7 +27,9 @@ const dish = [
   /* { "id": 1, "name": "Doro Wat", "category": "Main", "price": 240, "spicy": true }, */
 
 
-function Products(){
+function Products({category=""}){
+     const filterDish = category === "All"?dish:
+    dish.filter((value) => value.category === category)
     return(
         <div className='dish-grid'>
 
@@ -35,18 +37,17 @@ function Products(){
                 <h3 >Products Dishs</h3>
             </div>
   
-  
-
-
             <div className='item'>
-                {dish.map((value) => 
-<Dish 
-    key={value.id} 
-    id={value.id} 
-    name={value.name} 
-    price={value.price} />
-
-                )}
+                  {filterDish.length === 0?
+                <p>No Dish Founds</p>:
+                filterDish.map((value) => <Dish 
+                key={value.id} 
+                id={value.id} 
+                name={value.name} 
+                price={value.price}
+                category={value.category}
+                spicy={value.spicy} />)}
+                
             </div>
         </div>
     )

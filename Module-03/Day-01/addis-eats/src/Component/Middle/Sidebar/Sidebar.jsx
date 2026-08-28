@@ -1,10 +1,14 @@
 import './Sidebar.css'
+import { useState } from 'react'
+import state from '../../../State'
 
 function Sidebar(){
     return(
-        <div className='sidebar'>
-            <h3>SideBar</h3>
+        <div>
+            <state />
+            <h1>sidebar</h1>
         </div>
+        
     )
 }
 
