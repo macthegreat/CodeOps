@@ -1,0 +1,17 @@
+:root {
+  font-family: "Times New Roman", Times, serif;
+  color: #386d28;
+  background-color: #c7c422;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+}

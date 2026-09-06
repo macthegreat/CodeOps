@@ -1,0 +1,12 @@
+.dish-grid {
+  padding: 23px;
+  display: grid;
+  gap: 30px;
+}
+
+
+.item{
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap:14px;
+}

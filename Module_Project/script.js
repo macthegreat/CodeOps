@@ -9,6 +9,7 @@ const orderSection = document.querySelector('.order-section');
 const searchInput = document.getElementById('search');
 
 // Modal Elements
+
 const modal = document.getElementById('checkout-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const checkoutForm = document.getElementById('checkout-form');
@@ -17,6 +18,7 @@ const phoneError = document.getElementById('phone-error');
 const modalTotal = document.getElementById('modal-total');
 
 // 3. Fetch Menu
+
 async function fetchMenu() {
     try {
         const response = await fetch('./menu.json');
@@ -31,6 +33,7 @@ async function fetchMenu() {
 }
 
 // 4. Render Menu
+
 function renderMenu(dishes) {
     menuGrid.innerHTML = '';
 
@@ -55,7 +58,10 @@ function renderMenu(dishes) {
     });
 }
 
+
 // 5. Render Cart
+
+
 function renderCart() {
     let cartHTML = '<h2>Your Order</h2>';
 
@@ -99,6 +105,8 @@ function renderCart() {
 }
 
 // 6. Cart Manipulations
+
+
 function addToOrder(dishId) {
     const existingItem = cart.find(item => item.id === dishId);
 
@@ -112,6 +120,7 @@ function addToOrder(dishId) {
     }
     renderCart();
 }
+
 
 function removeFromOrder(dishId) {
     const itemIndex = cart.findIndex(item => item.id === dishId);
@@ -127,6 +136,7 @@ function removeFromOrder(dishId) {
 }
 
 // 7. Phone Number Validation Logic
+
 function validateEthioPhone(phoneNumber) {
   
     const ethioPhoneRegex = /^(\+251|0)[79]\d{8}$/;
@@ -138,6 +148,8 @@ function validateEthioPhone(phoneNumber) {
 }
 
 // 8. Modal & Checkout Handlers
+
+
 function openCheckoutModal(totalPrice) {
     modalTotal.textContent = `${totalPrice} ETB`;
     modal.style.display = 'flex'; // Display modal overlay

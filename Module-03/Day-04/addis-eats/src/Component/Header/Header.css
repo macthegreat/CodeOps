@@ -1,0 +1,11 @@
+.main-heading {
+  padding: 22px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+.title {
+  position: static;
+  top: 0;
+}
