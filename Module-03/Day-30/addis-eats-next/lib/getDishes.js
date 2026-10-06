@@ -1,4 +1,4 @@
-import dishes from "@/data/dishes";
+import dishes from "../Data/dishes";
 
 export async function getDishes() {
   await new Promise((resolve) => setTimeout(resolve, 500));

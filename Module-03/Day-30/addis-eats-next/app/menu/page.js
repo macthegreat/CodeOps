@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getDishes } from "@/lib/getDishes";
+import { getDishes } from "../../lib/getDishes";
 import DishList from "./DishList";
 import CategoryBar from "./CategoryBar";
 import FilterShell from "./FilterShell";
