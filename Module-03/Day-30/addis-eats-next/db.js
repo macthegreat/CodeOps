@@ -44,7 +44,9 @@ const mockDishes = [
 ];
 
 // In-memory orders store
-const mockOrders = [];
+const mockOrders =
+  globalThis.__addisEatsMockOrders ??
+  (globalThis.__addisEatsMockOrders = []);
 
 // Mock authenticated user session
 const mockSessionUser = {
@@ -88,8 +90,15 @@ export async function createOrder(data) {
   };
 
   mockOrders.push(newOrder);
+
+  console.log("Order created:", newOrder.id);
+  console.log("Orders in memory:", mockOrders.length);
+
   return newOrder;
 }
+
+
+
 
 /**
  * Retrieve a specific order by ID
