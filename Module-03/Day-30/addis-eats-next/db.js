@@ -82,10 +82,9 @@ export async function getDish(id) {
  */
 export async function createOrder(data) {
   const newOrder = {
-    id: `ord_${Math.floor(100 + Math.random() * 900)}`,
+    id: `ord_${Date.now()}`,
     ...data,
     status: "PENDING",
-    userId: mockSessionUser.id,
     createdAt: new Date().toISOString(),
   };
 

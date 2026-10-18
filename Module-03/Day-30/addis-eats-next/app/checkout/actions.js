@@ -3,14 +3,23 @@
 
 import { revalidatePath } from "next/cache";
 import { orderSchema } from "../../schema.js";
+import { getSession } from "../../lib/session.js";
 import {
   createOrder,
-  getSession,
   getOrder,
   markCancelled,
 } from "../../db.js";
 
 export async function placeOrder(previousState, formData) {
+  const session = await getSession();
+
+  if (!session?.user?.id) {
+    return {
+      success: false,
+      message: "You must be logged in to place an order.",
+    };
+  }
+
   const rawData = {
     name: formData.get("name"),
     phone: formData.get("phone"),
@@ -23,16 +32,17 @@ export async function placeOrder(previousState, formData) {
   if (!result.success) {
     return {
       success: false,
-      message: Object.values(
-        result.error.flatten().fieldErrors
-      )
+      message: Object.values(result.error.flatten().fieldErrors)
         .flat()
         .join(" "),
     };
   }
 
   try {
-    const order = await createOrder(result.data);
+    const order = await createOrder({
+      ...result.data,
+      userId: session.user.id,
+    });
 
     revalidatePath("/checkout");
 
@@ -51,7 +61,7 @@ export async function placeOrder(previousState, formData) {
 export async function cancelOrder(orderId) {
   const session = await getSession();
 
-  if (!session) {
+  if (!session?.user?.id) {
     return {
       success: false,
       message: "You must be logged in to cancel an order.",
@@ -67,7 +77,7 @@ export async function cancelOrder(orderId) {
     };
   }
 
-  if (order.userId !== session.id) {
+  if (order.userId !== session.user.id) {
     return {
       success: false,
       message: "You are not authorized to cancel this order.",
@@ -82,7 +92,6 @@ export async function cancelOrder(orderId) {
   }
 
   await markCancelled(orderId);
-
   revalidatePath("/checkout");
 
   return {

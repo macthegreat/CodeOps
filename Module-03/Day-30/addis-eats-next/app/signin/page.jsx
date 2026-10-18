@@ -1,12 +1,12 @@
 
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
   const [email, setEmail] = useState("demo@addiseats.com");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("DemoPass123!");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -15,30 +15,22 @@ export default function SignInPage() {
     setError("");
     setLoading(true);
 
+    const params = new URLSearchParams(window.location.search);
+    const next = params.get("next");
+
+    const destination =
+      next && next.startsWith("/") && !next.startsWith("//")
+        ? next
+        : "/";
+
     try {
-      const result = await signIn("credentials", {
+      await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        redirectTo: destination,
       });
-
-      if (!result || result.error) {
-        setError("Invalid email or password.");
-        return;
-      }
-
-      const params = new URLSearchParams(window.location.search);
-      const next = params.get("next");
-
-      const destination =
-        next && next.startsWith("/") && !next.startsWith("//")
-          ? next
-          : "/";
-
-      window.location.assign(destination);
     } catch {
       setError("Sign-in failed. Please try again.");
-    } finally {
       setLoading(false);
     }
   }
@@ -48,29 +40,33 @@ export default function SignInPage() {
       <h1>Sign in to Addis Eats</h1>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-        />
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          required
-        />
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
+          />
+        </div>
+
+        {error && <p role="alert">{error}</p>}
 
         <button type="submit" disabled={loading}>
           {loading ? "Signing in..." : "Sign in"}
         </button>
-
-        {error && <p role="alert">{error}</p>}
       </form>
     </main>
   );
