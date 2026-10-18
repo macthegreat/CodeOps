@@ -1,5 +1,4 @@
 
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
@@ -15,26 +14,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Addis Eats",
-  description: "Addis Eats restaurant application",
+  metadataBase: new URL("https://addiseats.et"),
+  title: {
+    template: "%s · Addis Eats",
+    default: "Addis Eats — Food Delivery in Addis Ababa",
+  },
+  description:
+    "Discover Ethiopian dishes and order food from kitchens across Addis Ababa.",
+  openGraph: {
+    siteName: "Addis Eats",
+    title: "Addis Eats — Food Delivery in Addis Ababa",
+    description:
+      "Discover Ethiopian dishes and order food from kitchens across Addis Ababa.",
+    type: "website",
+    locale: "en_ET",
+  },
 };
 
-export default function RootLayout({ children }){
+export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <header>
-          <h1>Addis Eats</h1>
-        </header>
-
-        <Providers> {children} </Providers>
-
-        <footer>
-          <p>© 2026 Addis Eats</p>
-        </footer>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -4,6 +4,23 @@ import DishList from "./DishList";
 import CategoryBar from "./CategoryBar";
 import FilterShell from "./FilterShell";
 
+
+export const metadata = {
+  title: "Ethiopian Food Menu",
+  description:
+    "Explore Ethiopian dishes including Doro Wat, Tibs, Kitfo and Shiro. Browse the Addis Eats menu and discover food in Addis Ababa.",
+  alternates: {
+    canonical: "/menu",
+  },
+  openGraph: {
+    title: "Ethiopian Food Menu",
+    description:
+      "Explore Ethiopian dishes and discover food across Addis Ababa.",
+    url: "/menu",
+    type: "website",
+  },
+};
+
 export const revalidate = 60;
 
 export default async function MenuPage() {
