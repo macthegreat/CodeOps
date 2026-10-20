@@ -1,17 +1,8 @@
 
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 import Providers from "./providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import SignOutButton from "./SignOutButton";
 
 export const metadata = {
   metadataBase: new URL("https://addiseats.et"),
@@ -34,8 +25,45 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>{children}</Providers>
+      <body>
+        <Providers>
+          <header className="site-header">
+            <nav className="site-nav" aria-label="Main navigation">
+              <Link href="/" className="site-brand">
+                <span className="site-brand-mark" aria-hidden="true">
+                  A
+                </span>
+                <span>Addis Eats</span>
+              </Link>
+
+              <div className="site-nav-links">
+                <Link href="/">Home</Link>
+                <Link href="/menu">Menu</Link>
+                <Link href="/cart">Cart</Link>
+
+                <Link href="/dashboard">Dashboard</Link>
+              </div>
+
+              <div className="site-nav-account">
+                <SignOutButton />
+              </div>
+            </nav>
+          </header>
+
+          <main className="site-main">{children}</main>
+
+          <footer className="site-footer">
+            <div className="site-footer-inner">
+              <Link href="/" className="site-footer-brand">
+                Addis Eats
+              </Link>
+              <p>Good food, delivered across Addis Ababa.</p>
+              <small>
+                © {new Date().getFullYear()} Addis Eats
+              </small>
+            </div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );

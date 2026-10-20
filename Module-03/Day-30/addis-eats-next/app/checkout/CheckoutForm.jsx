@@ -9,29 +9,40 @@ const initialState = {
   message: "",
 };
 
-
-
-
 export default function CheckoutForm() {
-    const [state, formAction, pending] = useActionState(
-        placeOrder,
-        initialState
-      );
+  const [state, formAction, pending] = useActionState(
+    placeOrder,
+    initialState
+  );
 
   return (
-    <form action={formAction}>
-      <div>
+    <form action={formAction} className="checkout-form">
+      <div className="form-field">
         <label htmlFor="name">Full name</label>
-        <input id="name" name="name" required />
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Enter your full name"
+          autoComplete="name"
+          required
+        />
       </div>
 
-      <div>
+      <div className="form-field">
         <label htmlFor="phone">Phone number</label>
-        <input id="phone" name="phone" required />
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          placeholder="Enter your phone number"
+          autoComplete="tel"
+          required
+        />
       </div>
 
-      <div>
-        <label htmlFor="dishId">Dish</label>
+      <div className="form-field">
+        <label htmlFor="dishId">Choose a dish</label>
         <select id="dishId" name="dishId" defaultValue="dish_1">
           <option value="dish_1">Doro Wat</option>
           <option value="dish_2">Beyaynetu</option>
@@ -40,7 +51,7 @@ export default function CheckoutForm() {
         </select>
       </div>
 
-      <div>
+      <div className="form-field">
         <label htmlFor="quantity">Quantity</label>
         <input
           id="quantity"
@@ -52,11 +63,25 @@ export default function CheckoutForm() {
         />
       </div>
 
-      <button type="submit" disabled={pending}>
-  {pending ? "Placing order..." : "Place order"}
-</button>
+      <button
+        type="submit"
+        className="checkout-submit"
+        disabled={pending}
+      >
+        {pending ? "Placing order..." : "Place order"}
+        {!pending && <span aria-hidden="true">→</span>}
+      </button>
 
-      {state.message && <p>{state.message}</p>}
+      {state.message && (
+        <p
+          className={`form-feedback ${
+            state.success ? "form-feedback-success" : "form-feedback-error"
+          }`}
+          role={state.success ? "status" : "alert"}
+        >
+          {state.message}
+        </p>
+      )}
     </form>
   );
 }

@@ -76,13 +76,18 @@ const orders = showEmpty ? [] : demoOrders;
   const pageOrders = sortedOrders.slice((page - 1) * pageSize, page * pageSize);
 
   return (
-    <main className="mx-auto max-w-6xl space-y-8 p-6">
-      <header>
-        <h1 className="text-3xl font-bold">Addis Eats Dashboard</h1>
-        <p className="mt-2 text-gray-600">
-          Demonstration data · October 14–18, 2026
-        </p>
-      </header>
+    <main className="dashboard-page">
+     <header className="dashboard-header">
+  <div>
+    <span className="eyebrow">BUSINESS OVERVIEW</span>
+    <h1>Addis Eats Dashboard</h1>
+    <p>Demonstration data · October 14–18, 2026</p>
+  </div>
+
+  <span className="dashboard-demo-label">
+    Demo data
+  </span>
+</header>
 
       <section className="rounded-lg border p-5">
         <h2 className="text-lg font-semibold">Total Revenue</h2>

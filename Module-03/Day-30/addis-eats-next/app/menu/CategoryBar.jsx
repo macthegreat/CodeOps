@@ -1,29 +1,31 @@
+
 "use client";
 
-import { useState } from "react";
-
-export default function CategoryBar() {
-  const [category, setCategory] = useState("All");
-
-  const categories = [
-    "All",
-    "Ethiopian",
-    "Italian",
-    "Fast Food",
-  ];
+export default function CategoryBar({
+  category,
+  onCategoryChange,
+}) {
+  const categories = ["All", "Ethiopian", "Italian", "Fast Food"];
 
   return (
-    <div>
+    <div
+      className="category-bar"
+      role="group"
+      aria-label="Filter dishes by category"
+    >
       {categories.map((item) => (
         <button
           key={item}
-          onClick={() => setCategory(item)}
+          type="button"
+          className={`category-button ${
+            category === item ? "active" : ""
+          }`}
+          aria-pressed={category === item}
+          onClick={() => onCategoryChange(item)}
         >
           {item}
         </button>
       ))}
-
-      <p>Selected category: {category}</p>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getDishes } from "../../../lib/getDishes";
 
@@ -42,7 +43,6 @@ export async function generateMetadata({ params }) {
 export default async function DishPage({ params }) {
   const { id } = await params;
   const dishes = await getDishes();
-
   const dish = dishes.find((item) => String(item.id) === id);
 
   if (!dish) {
@@ -62,7 +62,7 @@ export default async function DishPage({ params }) {
   };
 
   return (
-    <main>
+    <div className="dish-detail-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -70,10 +70,50 @@ export default async function DishPage({ params }) {
         }}
       />
 
-      <h1>{dish.name}</h1>
-      <p>Category: {dish.category}</p>
-      <p>Price: {dish.price} ETB</p>
-      <p>{dish.description}</p>
-    </main>
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <Link href="/">Home</Link>
+        <span aria-hidden="true">/</span>
+        <Link href="/menu">Menu</Link>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{dish.name}</span>
+      </nav>
+
+      <article className="dish-detail-card">
+        <div className="dish-detail-visual" aria-hidden="true">
+          <span>🍲</span>
+        </div>
+
+        <div className="dish-detail-content">
+          <span className="dish-category-label">{dish.category}</span>
+
+          <h1>{dish.name}</h1>
+
+          <p className="dish-detail-description">
+            {dish.description}
+          </p>
+
+          <div className="dish-detail-price">
+            <span>Price</span>
+            <strong>
+              {Number(dish.price).toLocaleString("en-ET")} ETB
+            </strong>
+          </div>
+
+          <div className="dish-detail-actions">
+            <Link href="/menu" className="button-primary">
+              Browse more dishes →
+            </Link>
+
+            <Link href="/cart" className="button-secondary">
+              View cart
+            </Link>
+          </div>
+
+          <p className="dish-detail-note">
+            Discover more Ethiopian favorites on the Addis Eats menu.
+          </p>
+        </div>
+      </article>
+    </div>
   );
 }

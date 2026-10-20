@@ -1,9 +1,6 @@
-import Link from "next/link";
-import { getDishes } from "../../lib/getDishes";
-import DishList from "./DishList";
-import CategoryBar from "./CategoryBar";
-import FilterShell from "./FilterShell";
 
+import { getDishes } from "../../lib/getDishes";
+import MenuBrowser from "./MenuBrowser";
 
 export const metadata = {
   title: "Ethiopian Food Menu",
@@ -27,20 +24,28 @@ export default async function MenuPage() {
   const dishes = await getDishes();
 
   return (
-    <main>
-      <h1>Menu</h1>
+    <div className="menu-page">
+      <section className="menu-hero">
+        <span className="eyebrow">MADE WITH LOCAL FLAVOR</span>
+        <h1>Discover your next favorite meal.</h1>
+        <p>
+          Explore Ethiopian classics, find something delicious,
+          and make your next meal special.
+        </p>
+        <div className="menu-hero-note">
+          <span aria-hidden="true">🍽️</span>
+          <span>{dishes.length} dishes to explore</span>
+        </div>
+      </section>
 
-      <Link href="/">Home</Link>
-      <br />
-      <Link href="/cart">Cart</Link>
-      <br />
-      <Link href="/checkout">Checkout</Link>
+      <section className="menu-content" aria-label="Food menu">
+        <div className="menu-section-heading">
+          <h2>Explore the menu</h2>
+          <p>Find the dishes you are craving.</p>
+        </div>
 
-      <CategoryBar />
-
-      <FilterShell>
-  <DishList dishes={dishes} />
-</FilterShell>
-    </main>
+        <MenuBrowser dishes={dishes} />
+      </section>
+    </div>
   );
 }

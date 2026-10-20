@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 
 export default function SignInPage() {
@@ -36,38 +37,68 @@ export default function SignInPage() {
   }
 
   return (
-    <main>
-      <h1>Sign in to Addis Eats</h1>
+    <div className="signin-page">
+      <section className="signin-card">
+        <Link href="/" className="signin-brand">
+          <span className="site-brand-mark" aria-hidden="true">A</span>
+          <span>Addis Eats</span>
+        </Link>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            required
-          />
+        <div className="signin-heading">
+          <span className="eyebrow">WELCOME BACK</span>
+          <h1>Sign in to Addis Eats</h1>
+          <p>Sign in to continue to your food ordering experience.</p>
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="signin-form">
+          <div className="form-field">
+            <label htmlFor="email">Email address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="you@example.com"
+              required
+            />
+          </div>
 
-        {error && <p role="alert">{error}</p>}
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing in..." : "Sign in"}
-        </button>
-      </form>
-    </main>
+          {error && (
+            <p className="form-feedback form-feedback-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            className="signin-submit"
+            disabled={loading}
+          >
+            {loading ? "Signing in..." : "Sign in"}
+            {!loading && <span aria-hidden="true">→</span>}
+          </button>
+        </form>
+
+        <p className="signin-footer">
+          Hungry? <Link href="/menu">Explore the menu</Link>
+        </p>
+      </section>
+    </div>
   );
 }
